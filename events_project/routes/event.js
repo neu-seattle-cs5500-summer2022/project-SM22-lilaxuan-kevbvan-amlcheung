@@ -20,29 +20,36 @@ router.get('/', function(request, response) {
 router.post('/', function(request, response) {
 
     const eventIdNum = request.body.eventId;
-    const eventTitle = request.body.title;
-    const eventDescription = request.body.description;
-    const eventDate = request.body.date;
+    const eventName = request.body.eventName;
+    const eventDescription = request.body.eventDescription;
+    const eventDate = request.body.eventDate;
+    const eventTime = request.body.eventTime;
     const eventOwner = request.body.owner;
+    const eventLocation = request.body.eventLocation;
 
     if (!eventIdNum) {
         response.status(401).send("Missing Event ID argument");
-    } else if (!eventTitle) {
+    } else if (!eventName) {
         response.status(401).send("Missing Event Title argument");
     } else if (!eventDescription) {
         response.status(401).send("Missing Event Descirption argument");
     } else if (!eventDate) {
         response.status(401).send("Missing Event Date argument");
+    } else if (!eventTime) {
+        response.status(401).send("Missing Event Time argument");
+    } else if (!eventLocation) {
+        response.status(401).send("Missing Event Location argument");
     } else if (!eventOwner) {
         response.status(401).send("Missing Event Owner argument");
     }
 
     const event = {
         eventId: eventIdNum,
-        title: eventTitle, 
+        title: eventName, 
         description: eventDescription,
         date: eventDate,
         owner: eventOwner,
+        location: eventLocation
     }
 
     console.log(event);
@@ -60,10 +67,12 @@ router.post('/', function(request, response) {
 // for an attribute if the user doesn't make any changes to it
 router.put('/', function(request, response) {
     const eventId = request.body.eventId;
-    const eventTitle = request.body.title;
-    const eventDescription = request.body.description;
-    const eventDate = request.body.date;
+    const eventName = request.body.eventName;
+    const eventDescription = request.body.eventDescription;
+    const eventDate = request.body.eventDate;
     const eventOwner = request.body.owner;
+    const eventTime = request.body.eventTime;
+    const eventLoctaion = request.body.eventLocation;
 
     if (eventDate === undefined) {
         eventDate = request.date;
@@ -72,7 +81,7 @@ router.put('/', function(request, response) {
         eventOwner = request.owner;
     }
 
-    return EventModel.updateEventByEventId(eventId, eventTitle, eventDescription, eventDate, eventOwner)
+    return EventModel.updateEventByEventId(eventId, eventName, eventDescription, eventDate, eventOwner, eventTime, eventLoctaion)
         .then(dbResponse => {
             response.status(200).send(dbResponse);
         })
