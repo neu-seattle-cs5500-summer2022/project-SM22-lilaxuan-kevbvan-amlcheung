@@ -10,9 +10,9 @@ const EventSchema = new Schema ({
     // eventDate: {
     //     type: Date
     // },
-    owner: String
+    // owner: String
 }, {
-        collection: 'events',
+    collection: 'events',
 })
 
 module.exports = EventSchema;
