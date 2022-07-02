@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ReviewSchema = require('../schema/event.schema');
+// const ReviewSchema = require('../schema/event.schema');
 
 const EventModel = mongoose.model("Event", EventSchema);
 

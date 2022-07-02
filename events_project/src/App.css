@@ -98,7 +98,7 @@ body {
   position: sticky;
 }
 
-.restaurant-name {
+.event-name {
   top: 10px;
   font-size: 50px;
   font-weight: bold;
@@ -138,7 +138,7 @@ body {
   border: rgb(218, 77, 77) solid 2px;
 }
 
-.restaurant-name:hover {
+.event-name:hover {
   color: rgb(218, 77, 77);
 }
 
@@ -172,7 +172,7 @@ textarea {
 
 
 @media (max-width: 450px) {
-  .restaurant-name {
+  .event-name {
     font-size: 40px;
   }
 

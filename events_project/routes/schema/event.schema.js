@@ -18,10 +18,13 @@ const Schema = require('mongoose').Schema;
 
 const EventSchema = new Schema ({
     eventId: String,
-    eventTitle: String,
-    eventDate: {
-        type: Date
-    },
+    eventName: String,
+    eventDate: String,
+    eventLocation: String,
+    eventDescription: String,
+    // eventDate: {
+    //     type: Date
+    // },
     owner: String
 }, {
         collection: 'events',

@@ -74,7 +74,7 @@ export default function EventsPage(props) {
             getReviewsForEvent();
     }
 
-    // Gets reviews for a specific restaurant
+    // Gets reviews for a specific event
     function getReviewsForEvent() {
         Axios.get('/api/review/' + params.eventId)
         .then(function(response) {
@@ -156,24 +156,25 @@ export default function EventsPage(props) {
     }
 
     // eventId: String,
-    // eventTitle: String,
+    // eventName: String,
     // eventDate: {
     //     type: Date
     // },
+
     return ( 
         <div className="font-style-events">
-            <div className="restaurant-name">
+            <div className="event-name">
                 {event.eventId} 
             </div>
             <div className="attribute-name">
-                Cuisine: {event.eventTitle}
+                Cuisine: {event.eventName}
             </div>
-            <button className = 'mod-button' id = "delete-restaurant" onClick={deleteEvent}>
-                delete restaurant
+            <button className = 'mod-button' id = "delete-event" onClick={deleteEvent}>
+                delete event
             </button>
             <button className = 'mod-button' onClick={editEvent}>edit event</button>
             <div>
-                review restaurant:
+                review event:
             </div>
             <textarea id= "theReview" rows = "10" cols = "60" onChange={e => setReview(e.target.value)}></textarea>
             <button className = 'mod-button' id = "create" onClick={createReview}>

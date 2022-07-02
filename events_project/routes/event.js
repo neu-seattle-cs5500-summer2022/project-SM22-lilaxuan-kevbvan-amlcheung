@@ -20,14 +20,14 @@ router.get('/', function(request, response) {
 router.post('/', function(request, response) {
 
     const eventIdNum = request.body.eventId;
-    const eventTitle = request.body.title;
+    const eventName = request.body.title;
     const eventDescription = request.body.description;
     const eventDate = request.body.date;
     const eventOwner = request.body.owner;
 
     if (!eventIdNum) {
         response.status(401).send("Missing Event ID argument");
-    } else if (!eventTitle) {
+    } else if (!eventName) {
         response.status(401).send("Missing Event Title argument");
     } else if (!eventDescription) {
         response.status(401).send("Missing Event Descirption argument");
@@ -39,7 +39,7 @@ router.post('/', function(request, response) {
 
     const event = {
         eventId: eventIdNum,
-        title: eventTitle, 
+        title: eventName, 
         description: eventDescription,
         date: eventDate,
         owner: eventOwner,
@@ -60,7 +60,7 @@ router.post('/', function(request, response) {
 // for an attribute if the user doesn't make any changes to it
 router.put('/', function(request, response) {
     const eventId = request.body.eventId;
-    const eventTitle = request.body.title;
+    const eventName = request.body.title;
     const eventDescription = request.body.description;
     const eventDate = request.body.date;
     const eventOwner = request.body.owner;
@@ -72,7 +72,7 @@ router.put('/', function(request, response) {
         eventOwner = request.owner;
     }
 
-    return EventModel.updateEventByEventId(eventId, eventTitle, eventDescription, eventDate, eventOwner)
+    return EventModel.updateEventByEventId(eventId, eventName, eventDescription, eventDate, eventOwner)
         .then(dbResponse => {
             response.status(200).send(dbResponse);
         })

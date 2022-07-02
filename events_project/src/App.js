@@ -35,7 +35,7 @@ export default function App() {
   // const [inputFields, setInputFields] = useState(
   //   [
   //     {
-  //       eventTitle: '',
+  //       eventName: '',
   //       eventDate: ''
   //     }
   //   ])
@@ -67,8 +67,7 @@ export default function App() {
   for (let e of event) {
     console.log(e);
     eventComponent.push(<div>
-      <a href={'/restaurant/' + e._id}><div className="restaurant-name font-style-events">{e.name}</div></a>
-      {/* <div className="attribute-name font-style-events margin">Michelin Stars: {restaurant.rating}</div> */}
+      <a href={'/event/' + e._id}><div className="event-name font-style-events">{e.name}</div></a>
     </div>)
   }
 
