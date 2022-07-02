@@ -19,7 +19,7 @@ import EventsPage from './EventsPage';
       {/* <Route path={"/login"} element={<Login />} />
       <Route path={"/createUser"} element={<CreateUser />} /> */}
       {/* <Route path={"/restaurantEntry/:restaurantId"} element={<RestaurantEntry />}/> */}
-      <Route path={"/events/:eventId"} element={<EventsPage />}/>
+      {/* <Route path={"/events/:eventId"} element={<EventsPage />}/> */}
     </Routes>
    </BrowserRouter>
       

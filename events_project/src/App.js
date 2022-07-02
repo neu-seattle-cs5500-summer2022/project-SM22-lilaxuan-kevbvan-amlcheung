@@ -4,6 +4,7 @@ import './App.css';
 // import { Button, Container } from 'react';
 // import { TextField } from 'react';
 import Modali, { useModali } from 'modali';
+import EventEntry from './EventEntry';
 // import EventsPage from './EventsPage';
 // import CreateEventForm from './components/createEventForm';
 
@@ -24,11 +25,11 @@ export default function App() {
     console.log(`Form submitted, ${form}`);
   }
   const [events, displayEvents] = useState([
-    { id: 1, eventName: 'Firworks', eventDate: "2022-04-01", location: "Seattle, WA", description: "The fireworks show is to celebrate the July 4th." },
-    { id: 2, eventName: 'Fancy show', eventDate: "2022-05-03", location: "Seattle, WA", description: "The fancy show is to celebrate the July 4th." },
-    { id: 3, eventName: 'Rocks & Roll', eventDate: "2022-04-21", location: "Los Angeles, CA", description: "This show is to celebrate the July 4th." },
-    { id: 4, eventName: 'Season', eventDate: "2022-05-21", location: "New Work, NY", description: "This show is to celebrate the July 4th." },
-    { id: 5, eventName: 'Summer', eventDate: "2022-06-03", location: "Seattle, WA", description: "This show is to celebrate the July 4th. " }
+    { id: 1, eventName: 'Firworks', eventDate: "2022-04-01", eventTime: "12:00:00",  location: "Seattle, WA", description: "The fireworks show is to celebrate the July 4th." },
+    { id: 2, eventName: 'Fancy show', eventDate: "2022-05-03", eventTime: "12:00:00", location: "Seattle, WA", description: "The fancy show is to celebrate the July 4th." },
+    { id: 3, eventName: 'Rocks & Roll', eventDate: "2022-04-21", eventTime: "12:00:00", location: "Los Angeles, CA", description: "This show is to celebrate the July 4th." },
+    { id: 4, eventName: 'Season', eventDate: "2022-05-21", eventTime: "12:00:00", location: "New Work, NY", description: "This show is to celebrate the July 4th." },
+    { id: 5, eventName: 'Summer', eventDate: "2022-06-03", eventTime: "12:00:00", location: "Seattle, WA", description: "This show is to celebrate the July 4th. " }
   ]);
 
 
@@ -91,6 +92,7 @@ export default function App() {
             <tr>
               <th> Event Name </th>
               <th>Even Date</th>
+              <th>Even Time</th>
               <th>Location</th>
               <th>Description</th>
             </tr>
@@ -100,6 +102,7 @@ export default function App() {
               <tr key={event.id}>
                 <td>{event.eventName} </td>
                 <td>{event.eventDate}</td>
+                <td>{event.eventTime}</td>
                 <td>{event.location}</td>
                 <td>{event.description}</td>
               </tr>
@@ -197,8 +200,9 @@ export default function App() {
 
       {/* <CreateEventForm />  */}
       {/* <EventsPage /> */}
+      <EventEntry />
 
-      <footer id="footer">Group 3 Team members: Ashley Cheung, Kevin Van, Jiaxuan Li </footer>
+      {/* <footer id="footer">Group 3 Team members: Ashley Cheung, Kevin Van, Jiaxuan Li </footer> */}
     </div>
   );
 }
