@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import './App.css';
-// import { Button, Container } from 'react';
-// import { TextField } from 'react';
 import Modali, { useModali } from 'modali';
 import EventEntry from './EventEntry';
 // import EventsPage from './EventsPage';
-// import CreateEventForm from './components/createEventForm';
 
 // This is the main entry of the app!
 
@@ -24,32 +21,13 @@ export default function App() {
     e.preventDefault();
     console.log(`Form submitted, ${form}`);
   }
-  const [events, displayEvents] = useState([
-    { id: 1, eventName: 'Firworks', eventDate: "2022-04-01", eventTime: "12:00:00",  location: "Seattle, WA", description: "The fireworks show is to celebrate the July 4th." },
-    { id: 2, eventName: 'Fancy show', eventDate: "2022-05-03", eventTime: "12:00:00", location: "Seattle, WA", description: "The fancy show is to celebrate the July 4th." },
-    { id: 3, eventName: 'Rocks & Roll', eventDate: "2022-04-21", eventTime: "12:00:00", location: "Los Angeles, CA", description: "This show is to celebrate the July 4th." },
-    { id: 4, eventName: 'Season', eventDate: "2022-05-21", eventTime: "12:00:00", location: "New Work, NY", description: "This show is to celebrate the July 4th." },
-    { id: 5, eventName: 'Summer', eventDate: "2022-06-03", eventTime: "12:00:00", location: "Seattle, WA", description: "This show is to celebrate the July 4th. " }
-  ]);
-
-
-  // const [inputFields, setInputFields] = useState(
-  //   [
-  //     {
-  //       eventName: '',
-  //       eventDate: ''
-  //     }
-  //   ])
-
-  // const handleChangeInput = (index, event) => {
-  //   const values = [...inputFields];
-  //   values[index][event.target.name] = event.target.value;
-  //   setInputFields(values);
-  // }
-
-  //   const handleSubmit = (e) => {
-  //     console.log("input fields are: ", inputFields)
-  //   }
+  // const [events, displayEvents] = useState([
+  //   { id: 1, eventName: 'Firworks', eventDate: "2022-04-01", eventTime: "12:00:00",  location: "Seattle, WA", description: "The fireworks show is to celebrate the July 4th." },
+  //   { id: 2, eventName: 'Fancy show', eventDate: "2022-05-03", eventTime: "12:00:00", location: "Seattle, WA", description: "The fancy show is to celebrate the July 4th." },
+  //   { id: 3, eventName: 'Rocks & Roll', eventDate: "2022-04-21", eventTime: "12:00:00", location: "Los Angeles, CA", description: "This show is to celebrate the July 4th." },
+  //   { id: 4, eventName: 'Season', eventDate: "2022-05-21", eventTime: "12:00:00", location: "New Work, NY", description: "This show is to celebrate the July 4th." },
+  //   { id: 5, eventName: 'Summer', eventDate: "2022-06-03", eventTime: "12:00:00", location: "Seattle, WA", description: "This show is to celebrate the July 4th. " }
+  // ]);
 
 
 
@@ -85,7 +63,7 @@ export default function App() {
       </p>
 
 
-      <div className="Display_events">
+      {/* <div className="Display_events">
         <h3 className="p-3 text-center">Display a list of events</h3>
         <table className="table table-striped table-bordered">
           <thead>
@@ -109,7 +87,7 @@ export default function App() {
             )}
           </tbody>
         </table>
-      </div>
+      </div> */}
 
 
       <button onClick={openModal}>
@@ -197,8 +175,6 @@ export default function App() {
       </div>
 
 
-
-      {/* <CreateEventForm />  */}
       {/* <EventsPage /> */}
       <EventEntry />
 

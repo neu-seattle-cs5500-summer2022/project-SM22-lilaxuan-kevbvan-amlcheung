@@ -24,7 +24,6 @@ router.post('/', function(request, response) {
     const eventDescription = request.body.eventDescription;
     const eventDate = request.body.eventDate;
     const eventTime = request.body.eventTime;
-    const eventOwner = request.body.owner;
     const eventLocation = request.body.eventLocation;
 
     if (!eventIdNum) {
@@ -39,16 +38,12 @@ router.post('/', function(request, response) {
         response.status(401).send("Missing Event Time argument");
     } else if (!eventLocation) {
         response.status(401).send("Missing Event Location argument");
-    } else if (!eventOwner) {
-        response.status(401).send("Missing Event Owner argument");
-    }
 
     const event = {
         eventId: eventIdNum,
         title: eventName, 
         description: eventDescription,
         date: eventDate,
-        owner: eventOwner,
         location: eventLocation
     }
 
@@ -63,25 +58,21 @@ router.post('/', function(request, response) {
         })
 });
 
-// update a the date or owner attribute of an event. Will keep the original info
+// update the attribute of an event. Will keep the original info
 // for an attribute if the user doesn't make any changes to it
 router.put('/', function(request, response) {
     const eventId = request.body.eventId;
     const eventName = request.body.eventName;
     const eventDescription = request.body.eventDescription;
     const eventDate = request.body.eventDate;
-    const eventOwner = request.body.owner;
     const eventTime = request.body.eventTime;
     const eventLoctaion = request.body.eventLocation;
 
     if (eventDate === undefined) {
         eventDate = request.date;
     }
-    if (eventOwner === undefined) {
-        eventOwner = request.owner;
-    }
 
-    return EventModel.updateEventByEventId(eventId, eventName, eventDescription, eventDate, eventOwner, eventTime, eventLoctaion)
+    return EventModel.updateEventByEventId(eventId, eventName, eventDescription, eventDate, eventTime, eventLoctaion)
         .then(dbResponse => {
             response.status(200).send(dbResponse);
         })
