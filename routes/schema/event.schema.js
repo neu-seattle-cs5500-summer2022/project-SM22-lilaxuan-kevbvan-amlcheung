@@ -1,7 +1,7 @@
 const Schema = require('mongoose').Schema;
 
 const EventSchema = new Schema ({
-    eventId: String,
+    // eventId: String,
     eventName: String,
     eventDate: String,
     eventLocation: String,

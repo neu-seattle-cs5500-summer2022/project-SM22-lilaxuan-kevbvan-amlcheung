@@ -6,7 +6,7 @@ const EventModel = require('./model/event.model');
 const router = express.Router();
 
 // Gets all events
-router.get('/', function(request, response) {
+router.get('/', function (request, response) {
     return EventModel.getAllEvents()
         .then(allEvents => {
             response.status(200).send(allEvents)
@@ -17,34 +17,38 @@ router.get('/', function(request, response) {
 })
 
 // create an event
-router.post('/', function(request, response) {
+router.post('/', function (request, response) {
 
-    const eventIdNum = request.body.eventId;
-    const eventName = request.body.eventName;
-    const eventDescription = request.body.eventDescription;
-    const eventDate = request.body.eventDate;
-    const eventTime = request.body.eventTime;
-    const eventLocation = request.body.eventLocation;
+    console.log("hello here!!");
 
-    if (!eventIdNum) {
-        response.status(401).send("Missing Event ID argument");
-    } else if (!eventName) {
+    // const eventIdNum = request.body.eventId;
+    const name = request.body.eventName;
+    const description = request.body.eventDescription;
+    const date = request.body.eventDate;
+    const time = request.body.eventTime;
+    const location = request.body.eventLocation;
+
+    // if (!eventIdNum) {
+    //     response.status(401).send("Missing Event ID argument");
+    if (!name) {
         response.status(401).send("Missing Event Title argument");
-    } else if (!eventDescription) {
+    } else if (!description) {
         response.status(401).send("Missing Event Descirption argument");
-    } else if (!eventDate) {
+    } else if (!date) {
         response.status(401).send("Missing Event Date argument");
-    } else if (!eventTime) {
+    } else if (!time) {
         response.status(401).send("Missing Event Time argument");
-    } else if (!eventLocation) {
+    } else if (!location) {
         response.status(401).send("Missing Event Location argument");
+    }
 
     const event = {
-        eventId: eventIdNum,
-        title: eventName, 
-        description: eventDescription,
-        date: eventDate,
-        location: eventLocation
+        // eventId: eventIdNum,
+        eventName: name,
+        eventDescription: description,
+        eventDate: date,
+        eventTime: time,
+        eventLocation: location
     }
 
     console.log(event);
@@ -60,7 +64,7 @@ router.post('/', function(request, response) {
 
 // update the attribute of an event. Will keep the original info
 // for an attribute if the user doesn't make any changes to it
-router.put('/', function(request, response) {
+router.put('/', function (request, response) {
     const eventId = request.body.eventId;
     const eventName = request.body.eventName;
     const eventDescription = request.body.eventDescription;
@@ -82,16 +86,16 @@ router.put('/', function(request, response) {
 });
 
 // delete an event
-router.delete('/:eventId', function(request, response) {
+router.delete('/:eventId', function (request, response) {
     const eventId = request.params.eventId;
 
     return EventModel.deleteEvent(eventId)
-    .then(dpResponse => {
-        response.status(200).send(dpResponse);
-    })
-    .catch(error => {
-        response.status(400).send(error);
-    })
+        .then(dpResponse => {
+            response.status(200).send(dpResponse);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
 })
 
 module.exports = router;
