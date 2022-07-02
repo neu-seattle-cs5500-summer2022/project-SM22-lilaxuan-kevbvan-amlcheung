@@ -12,9 +12,17 @@ import Modali, { useModali } from 'modali';
 export default function App() {
 
   const [event, setEvent] = useState([]);
+
   const [modal, openModal] = useModali();
   const [modal1, openModal1] = useModali();
   const [modal2, openModal2] = useModali();
+
+  // handle the submit of the input form of the Modal section
+  const [form, setForm] = useState('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(`Form submitted, ${form}`);
+  }
   const [events, displayEvents] = useState([
     { id: 1, eventName: 'Firworks', eventDate: "2022-04-01", location: "Seattle, WA", description: "The fireworks show is to celebrate the July 4th." },
     { id: 2, eventName: 'Fancy show', eventDate: "2022-05-03", location: "Seattle, WA", description: "The fancy show is to celebrate the July 4th." },
@@ -22,6 +30,7 @@ export default function App() {
     { id: 4, eventName: 'Season', eventDate: "2022-05-21", location: "New Work, NY", description: "This show is to celebrate the July 4th." },
     { id: 5, eventName: 'Summer', eventDate: "2022-06-03", location: "Seattle, WA", description: "This show is to celebrate the July 4th. " }
   ]);
+
 
   // const [inputFields, setInputFields] = useState(
   //   [
@@ -120,6 +129,8 @@ export default function App() {
           <p>
           </p>
           <button onClick={openModal}>submit</button>
+          {/* <input onChange={(e) => setForm(e.target.value)} value={form}></input>
+          <button type='submit'>submit</button> */}
           <p>
           </p>
         </form>
@@ -146,6 +157,8 @@ export default function App() {
           <p>
           </p>
           <button onClick={openModal1}>submit</button>
+          {/* <input onChange={(e) => setForm(e.target.value)} value={form}></input>
+          <button type='submit'>submit</button> */}
           <p>
           </p>
         </form>
@@ -166,6 +179,8 @@ export default function App() {
           <p>
           </p>
           <button onClick={openModal2}>submit</button>
+          {/* <input onChange={(e) => setForm(e.target.value)} value={form}></input>
+          <button type='submit'>submit</button> */}
           <p>
           </p>
         </form>
