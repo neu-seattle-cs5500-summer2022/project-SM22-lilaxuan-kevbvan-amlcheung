@@ -1,54 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import './App.css';
-import Modali, { useModali } from 'modali';
-import EventEntry from './EventEntry';
+// import Modali, { useModali } from 'modali';
+// import EventEntry from './EventEntry';
+// import { getAllEvents } from '../routes/model/event.model';
 // import EventsPage from './EventsPage';
 
 // This is the main entry of the app!
 
 export default function App() {
 
-  const [event, setEvent] = useState([]);
+  const [events, setEvents] = useState([]);
 
-  const [modal, openModal] = useModali();
-  const [modal1, openModal1] = useModali();
-  const [modal2, openModal2] = useModali();
-
-  // handle the submit of the input form of the Modal section
-  const [form, setForm] = useState('');
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(`Form submitted, ${form}`);
-  }
-  // const [events, displayEvents] = useState([
-  //   { id: 1, eventName: 'Firworks', eventDate: "2022-04-01", eventTime: "12:00:00",  location: "Seattle, WA", description: "The fireworks show is to celebrate the July 4th." },
-  //   { id: 2, eventName: 'Fancy show', eventDate: "2022-05-03", eventTime: "12:00:00", location: "Seattle, WA", description: "The fancy show is to celebrate the July 4th." },
-  //   { id: 3, eventName: 'Rocks & Roll', eventDate: "2022-04-21", eventTime: "12:00:00", location: "Los Angeles, CA", description: "This show is to celebrate the July 4th." },
-  //   { id: 4, eventName: 'Season', eventDate: "2022-05-21", eventTime: "12:00:00", location: "New Work, NY", description: "This show is to celebrate the July 4th." },
-  //   { id: 5, eventName: 'Summer', eventDate: "2022-06-03", eventTime: "12:00:00", location: "Seattle, WA", description: "This show is to celebrate the July 4th. " }
-  // ]);
-
-
-
-  {/* Question: where is this api defined? api/event */ }
-  function getEvent() {
+  // not working
+  function getEvents() {
+    console.log("in getEvents()");
     Axios.get('/api/event/')
-      .then(function (response) {
-        setEvent(response.data);
+      .then(function(response) {
+        setEvents(response.data);
       })
   }
-  useEffect(getEvent, []);
-  console.log(event);
 
-  const eventComponent = [];
-  console.log(eventComponent);
-  for (let e of event) {
-    console.log(e);
-    eventComponent.push(<div>
-      <a href={'/event/' + e._id}><div className="event-name font-style-events">{e.name}</div></a>
+  useEffect(getEvents, []);
+  console.log("Events: " + events);
+
+const eventComponent = [];
+console.log("eventComponent: " + eventComponent);
+for (let event of events) {
+  eventComponent.push(<div>
+    <a href={'/event/' + event._id}><div>Event Name: {event.eventName}</div></a>
+    <div>Location: {event.eventLocation}</div>
     </div>)
-  }
+}
+
 
 
   return (
@@ -56,129 +40,14 @@ export default function App() {
 
       <header className="App-header">
         <p>
-          Welocme to the Events Project!
+          Welcome to the Events Project!
         </p>
       </header>
-      <p>
-      </p>
 
-
-      {/* <div className="Display_events">
-        <h3 className="p-3 text-center">Display a list of events</h3>
-        <table className="table table-striped table-bordered">
-          <thead>
-            <tr>
-              <th> Event Name </th>
-              <th>Even Date</th>
-              <th>Even Time</th>
-              <th>Location</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {events && events.map(event =>
-              <tr key={event.id}>
-                <td>{event.eventName} </td>
-                <td>{event.eventDate}</td>
-                <td>{event.eventTime}</td>
-                <td>{event.location}</td>
-                <td>{event.description}</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div> */}
-
-
-      <button onClick={openModal}>
-        Create a new event
-      </button>
-      <Modali.Modal {...modal}>
-        <form>
-          <p>Create a new event:</p>
-          <label>Event Name: <input type="text" /> </label>
-          <p>
-          </p>
-          <label>Event Date: <input type="text" /> </label>
-          <p>
-          </p>
-          <label>Location: <input type="text" /> </label>
-          <p>
-          </p>
-          <label>Description: <input type="text" /> </label>
-          <p>
-          </p>
-          <button onClick={openModal}>submit</button>
-          {/* <input onChange={(e) => setForm(e.target.value)} value={form}></input>
-          <button type='submit'>submit</button> */}
-          <p>
-          </p>
-        </form>
-      </Modali.Modal>
-      <p>
-      </p>
-
-      <button onClick={openModal1}>
-        Update an event
-      </button>
-      <Modali.Modal {...modal1}>
-        <form>
-          <p>Update an event:</p>
-          <label>Event Name: <input type="text" /> </label>
-          <p>
-          </p>
-          <label>Event Date: <input type="text" /> </label>
-          <p>
-          </p>
-          <label>Location: <input type="text" /> </label>
-          <p>
-          </p>
-          <label>Description: <input type="text" /> </label>
-          <p>
-          </p>
-          <button onClick={openModal1}>submit</button>
-          {/* <input onChange={(e) => setForm(e.target.value)} value={form}></input>
-          <button type='submit'>submit</button> */}
-          <p>
-          </p>
-        </form>
-      </Modali.Modal>
-      <p>
-      </p>
-
-      <button onClick={openModal2}>
-        Delete an event
-      </button>
-      <Modali.Modal {...modal2}>
-        <form>
-          <p>Delete an event:</p>
-          <label>Event Name: <input type="text" /> </label>
-          <p>
-          </p>
-          <label>Event Date: <input type="text" /> </label>
-          <p>
-          </p>
-          <button onClick={openModal2}>submit</button>
-          {/* <input onChange={(e) => setForm(e.target.value)} value={form}></input>
-          <button type='submit'>submit</button> */}
-          <p>
-          </p>
-        </form>
-      </Modali.Modal>
-      <p>
-      </p>
-
-
-      {/* todo: Diaplay all the events  */}
-      <div className="font-style-events">
+      <div>
         {eventComponent}
       </div>
 
-
-      {/* <EventsPage /> */}
-      <EventEntry />
-
-      {/* <footer id="footer">Group 3 Team members: Ashley Cheung, Kevin Van, Jiaxuan Li </footer> */}
     </div>
   );
 }

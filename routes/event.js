@@ -19,7 +19,7 @@ router.get('/', function (request, response) {
 // create an event
 router.post('/', function (request, response) {
 
-    console.log("hello here!!");
+    console.log("in router.post()!!");
 
     // const eventIdNum = request.body.eventId;
     const name = request.body.eventName;

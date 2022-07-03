@@ -9,14 +9,18 @@ const app = express();
 // const userRouter = require('./routes/user');
 const eventRouter = require('./routes/event');
 
+// console.log("SERVER");
+
 // const mongoDBEndpoint = 'mongodb+srv://madeleine:van28247@webdev.qxpy6.mongodb.net/restaurant_app?retryWrites=true&w=majority';
 // const mongoDBEndpoint = 'mongodb+srv://5500:5500@project5500.tgzl7.mongodb.net/Project5500?retryWrites=true&w=majority'
-const mongoDBEndpoint = "mongodb+srv://5500:5500@project5500.tgzl7.mongodb.net/?retryWrites=true&w=majority";
+// const mongoDBEndpoint = process.env.MONGODB_URI || 'mongodb://127.0.0.1/project-SM22-lilaxuan-kevbvan-amlcheung';
+const mongoDBEndpoint = 'mongodb+srv://cs5500:cs5500@seaswe.tgzl7.mongodb.net/events_app?retryWrites=true&w=majority';
 
 mongoose.connect(mongoDBEndpoint, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Error connecting to MongoDB:'));
-db.once("open", () => console.log("connect to database"))
+db.once("open", () => console.log("connect to database"));
+
 //const cors = require('cors');
 //const auth_middleware = require('./routes/middleware/auth_middleware');
 
@@ -47,13 +51,3 @@ app.get('*', function (req, res) {
 app.listen(process.env.PORT || 8000, () => {
   console.log('Starting server');
 });
-
-
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = "mongodb+srv://5500:<password>@project5500.tgzl7.mongodb.net/?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
