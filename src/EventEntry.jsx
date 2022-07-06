@@ -58,40 +58,42 @@ export default function EventEntry() {
     // console.log("HERE");
     if (params.eventId === 'new') {
         return (
-            <div>
-                <div>Create a New Event</div>
-              
-                    <div>
-                        Event Name
-                    </div>
-                    <input id = 'eventName' className="input-box" value={eventName} onChange={e => setEventName(e.target.value)} />
-    
-                    <div>
-                        Date
-                    </div>
-                    <input id = 'eventDate'className="input-box" value={eventDate} onChange={e => setEventDate(e.target.value)} />
-    
-                    <div>
-                        Time
-                    </div>
-                    <input id = 'eventTime' className="input-box" value={eventTime} onChange={e => setEventTime(e.target.value)} />
-    
-                    <div>
-                        Description
-                    </div>
-                    <input id = 'eventDescription'className="input-box" value={eventDescription} onChange={e => setEventDesc(e.target.value)} />
-    
-                    <div>
-                        Location
-                    </div>
-                    <input id = 'eventLocation' className="input-box" value={eventLocation} onChange={e => setEventLocation(e.target.value)} />
-    
-    
-                    <button className="submit" onClick={createNewEvent}>
-                        Submit
-                    </button>
+            <div className='inputPage'>
+                <div className="header">Create a New Event</div>
+
+                <div className="new-event-form"></div>
+                <div>
+                    Event Name
+                </div>
+                <input id='eventName' className="input-box" value={eventName} onChange={e => setEventName(e.target.value)} />
+
+                <div>
+                    Date
+                </div>
+                <input id='eventDate' className="input-box" value={eventDate} onChange={e => setEventDate(e.target.value)} />
+
+                <div>
+                    Time
+                </div>
+                <input id='eventTime' className="input-box" value={eventTime} onChange={e => setEventTime(e.target.value)} />
+
+                <div>
+                    Description
+                </div>
+                <input id='eventDescription' className="input-box" value={eventDescription} onChange={e => setEventDesc(e.target.value)} />
+
+                <div>
+                    Location
+                </div>
+                <input id='eventLocation' className="input-box" value={eventLocation} onChange={e => setEventLocation(e.target.value)} />
+                <p>
+                </p>
+
+                <button className="submit" onClick={createNewEvent}>
+                    Submit
+                </button>
             </div>
-    
+
         )
     } else {
         return (
@@ -102,37 +104,38 @@ export default function EventEntry() {
                         Event Name
                     </div>
                     <input className="input-box" value={eventName} onChange={e => setEventName(e.target.value)} />
-    
+
                     <div>
                         Date
                     </div>
                     <input className="input-box" value={eventDate} onChange={e => setEventDate(e.target.value)} />
-    
+
                     <div>
                         Time
                     </div>
                     <input className="input-box" value={eventTime} onChange={e => setEventTime(e.target.value)} />
-    
+
                     <div>
                         Description
                     </div>
                     <input className="input-box" value={eventDescription} onChange={e => setEventDesc(e.target.value)} />
-    
+
                     <div>
                         Location
                     </div>
                     <input className="input-box" value={eventLocation} onChange={e => setEventLocation(e.target.value)} />
-    
-    
+                    <p>
+                    </p>
+
                     <button className="submit" onClick={createNewEvent}>
                         Submit
                     </button>
                 </div>
             </div>
-    
+
         )
 
     }
-    
+
     // }
 }
