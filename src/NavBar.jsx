@@ -1,7 +1,7 @@
 import Axios from 'axios';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-// import './NavBar.css';
+import './NavBar.css';
 
 export default function NavBar(props) {
 
@@ -24,9 +24,11 @@ export default function NavBar(props) {
     //     .catch(error => console.log("Error logging out"));
     // }
 
+    // /eventEntry/new -> new is the event id
+    // href component cannot have style?? why the component will still exist on another page??????
     return (
-        <div>
-             <a href='/eventEntry/new'><h1>Create An Event</h1></a>
+        <div className='createEvent'>
+            <a href='/eventEntry/new'><h4>Create An Event</h4></a>
         </div>
 
     )

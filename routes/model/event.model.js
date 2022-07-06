@@ -30,7 +30,7 @@ function updateEventByEventId(id, updatedEvent) {
 }
 
 function deleteEventByEventId(EventId) {
-    return EventModel.deleteMany({
+    return EventModel.findByIdAndDelete(EventId)({
         eventId: EventId
     }).exec();
 }
