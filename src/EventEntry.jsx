@@ -21,7 +21,7 @@ export default function EventEntry() {
         const timeInput = document.getElementById('eventTime');
         const descInput = document.getElementById('eventDescription');
         const locationInput = document.getElementById('eventLocation')
-        if (params.eventId == 'new') {
+        if (params.eventId === 'new') {
             eventInput.value = '';
             dateInput.value = '';
             timeInput.value = '';
@@ -43,18 +43,33 @@ export default function EventEntry() {
                 })
                 .catch(error => { console.log(error) });
         }
-    }, []);
+    }, [params.eventId]);
 
     function createNewEvent() {
         Axios.post('/api/event/', { eventName, eventDate, eventTime, eventDescription, eventLocation })
             .then(response => {
                 console.log("created event");
                 console.log(response.data);
-                // navigate('/');
-                navigate(0); // refreshes the page
+                navigate('/');
+                navigate(0);
             })
             .catch(error => console.log(error.response));
     }
+
+
+    function updateEvent() {
+        const eventId = params.eventId;
+        Axios.put('/api/event/', {eventId, eventName, eventDate, eventTime, eventDescription, eventLocation})
+            .then(response => {
+                console.log("WE ARE IN UPDATE EVENT")
+                navigate('/event/' + eventId);
+                navigate(0);
+            })
+            .catch(error => console.log(error.response));
+    }
+
+
+
     // console.log("HERE");
     if (params.eventId === 'new') {
         return (
@@ -127,7 +142,7 @@ export default function EventEntry() {
                     <p>
                     </p>
 
-                    <button className="submit" onClick={createNewEvent}>
+                    <button className="submit" onClick={updateEvent}>
                         Submit
                     </button>
                 </div>

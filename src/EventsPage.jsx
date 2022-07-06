@@ -1,7 +1,6 @@
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams,  useNavigate } from 'react-router';
-import './App.css';
 import './EventEntry';
 
 export default function EventsPage(props) {
@@ -13,6 +12,7 @@ export default function EventsPage(props) {
 
     // Gets the event and sets the event Id
     useEffect(function() {
+        console.log("IN EVENTSPAGE");
         Axios.get('/api/event/' + params.eventId)
             .then(response => setEvent(response.data))
             .catch(error => {
@@ -21,19 +21,59 @@ export default function EventsPage(props) {
                 navigate("/");
                 navigate("0");
                 }
-                });
+            });
         setEventId(params.eventId);
     },[]);
 
-   
+
+    function deleteEvent() {
+        const eventId = event._id;
+        Axios.delete('/api/event/' + eventId)
+            .then(response => {
+                navigate('/')
+                navigate(0)
+            })
+            .catch(err => console.log(err));
+    }
+
+    function updateEvent() {
+        navigate('/eventEntry/' + params.eventId)
+        navigate(0)
+    }
+
+
+
+
+    if (!event) {
+
+        return (<div>
+        
+        Event loading...
+        
+        </div>)
+        
+    }
 
     return ( 
         <div>
             <div>
-                Event Id: {event.eventId} 
+                <button onClick={deleteEvent}>Delete Event</button>
+                <button onClick={updateEvent}>Update Event</button>
             </div>
             <div>
                 Event Name: {event.eventName}
+            </div>
+            <div>
+                Description: {event.eventDescription}
+            </div>
+            <div>
+                Time: {event.eventTime}
+            </div>
+            <div>
+                Date: {event.eventDate}
+            </div>
+            <div>
+                Location: {event.eventLocation}
             </div>
         </div>
         ) 

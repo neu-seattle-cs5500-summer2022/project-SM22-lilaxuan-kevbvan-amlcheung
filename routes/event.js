@@ -9,17 +9,35 @@ const router = express.Router();
 router.get('/', function (request, response) {
     return EventModel.getAllEvents()
         .then(allEvents => {
+            // console.log("get all routes");
             response.status(200).send(allEvents)
         })
         .catch(error => {
+            // console.log("event.js: 3");
             response.status(400).send(error)
+        })
+})
+
+// gets event by Id
+router.get('/:eventId', function(request, response) {
+    const eventId = request.params.eventId
+    // console.log("eventId: " + eventId);
+
+    return EventModel.getEventById(eventId)
+        .then(event => {
+                response.status(200).send(event);
+                // console.log("Get Sucessful");
+        })
+        .catch(error => {
+            response.status(400).send(error);
+            console.log("C");
         })
 })
 
 // create an event
 router.post('/', function (request, response) {
 
-    console.log("in router.post()!!");
+    // console.log("in router.post()!!");
 
     // const eventIdNum = request.body.eventId;
     const name = request.body.eventName;
@@ -51,7 +69,7 @@ router.post('/', function (request, response) {
         eventLocation: location
     }
 
-    console.log(event);
+    // console.log("Event POST" + event);
 
     return EventModel.createEvent(event)
         .then(dbResponse => {
@@ -70,13 +88,13 @@ router.put('/', function (request, response) {
     const eventDescription = request.body.eventDescription;
     const eventDate = request.body.eventDate;
     const eventTime = request.body.eventTime;
-    const eventLoctaion = request.body.eventLocation;
+    const eventLocation = request.body.eventLocation;
 
     if (eventDate === undefined) {
         eventDate = request.date;
     }
 
-    return EventModel.updateEventByEventId(eventId, eventName, eventDescription, eventDate, eventTime, eventLoctaion)
+    return EventModel.updateEventByEventId(eventId, eventName, eventDate, eventTime, eventDescription, eventLocation)
         .then(dbResponse => {
             response.status(200).send(dbResponse);
         })
