@@ -23,7 +23,7 @@ export default function App() {
     { id: 5, eventName: 'Summer', eventDate: "2022-06-03", eventTime: "12:00:00", location: "Seattle, WA", description: "This show is to celebrate the July 4th. " }
   ]);
 
-  // not working
+
   function getEvents() {
     console.log("in getEvents()");
     Axios.get('/api/event/')
@@ -55,10 +55,6 @@ export default function App() {
         </p>
       </header>
 
-      <div>
-        {eventComponent}
-      </div>
-
       <p></p>
       <p></p>
       <p></p>
@@ -87,7 +83,11 @@ export default function App() {
           </tbody>
         </table>
       </div>
-
+      
+  
+      <div>
+        {eventComponent}
+      </div>
 
 
       <footer id="footer">Group 3 Team members: Ashley Cheung, Kevin Van, Jiaxuan Li </footer>

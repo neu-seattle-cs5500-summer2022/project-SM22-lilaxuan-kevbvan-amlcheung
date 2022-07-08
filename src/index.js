@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
-import EventEntry from './EventEntry';
-import NavBar from './NavBar';
+import EventEntry from './components/EventsEntry/EventEntry';
+import NavBar from './components/NavBar/NavBar';
 // import Login from './Login';
 // import CreateUser from './CreateUser';
 // import RestaurantEntry from './RestaurantEntry';
-import EventsPage from './EventsPage';
+import EventsPage from './components/EventsPage/EventsPage';
 
 // Todo: change it here!!
 
