@@ -1,11 +1,11 @@
-import Axios from 'axios';
+// import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import './NavBar.css';
 
 export default function NavBar(props) {
 
-    const [username, setUsername] = useState(null);
+    // const [username, setUsername] = useState(null);
 
     const navigate = useNavigate();
 

@@ -21,7 +21,7 @@ export default function EventEntry() {
         const timeInput = document.getElementById('eventTime');
         const descInput = document.getElementById('eventDescription');
         const locationInput = document.getElementById('eventLocation')
-        if (params.eventId == 'new') {
+        if (params.eventId === 'new') {
             eventInput.value = '';
             dateInput.value = '';
             timeInput.value = '';
@@ -50,8 +50,8 @@ export default function EventEntry() {
             .then(response => {
                 console.log("created event");
                 console.log(response.data);
-                // navigate('/');
-                navigate(0); // refreshes the page
+                navigate('/');
+                navigate(0);
             })
             .catch(error => console.log(error.response));
     }

@@ -1,8 +1,7 @@
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams,  useNavigate } from 'react-router';
-import './App.css';
-import './EventEntry';
+import '../EventsEntry/EventEntry';
 
 export default function EventsPage(props) {
 
