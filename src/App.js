@@ -26,14 +26,21 @@ export default function App() {
 
   function getEvents() {
     console.log("in getEvents()");
-    Axios.get('/api/event/')
-      .then(function (response) {
-        setEvents(response.data);
-      })
+    // Axios.get('/api/event/')
+    //   .then(function (response) {
+    //     setEvents(response.data);
+    //   })
+    Axios.get('/')
+    .then(function (response) {
+      console.log("success");
+      setEvents(response.data);
+      console.log("EVENTS: " + events);
+    })
+    .catch(error => {console.log("ERROR: " + error)});
   }
 
   useEffect(getEvents, []);
-  console.log("Events: " + events);
+  // console.log("Events: " + events);
 
   const eventComponent = [];
   console.log("eventComponent: " + eventComponent);
@@ -58,7 +65,7 @@ export default function App() {
       <p></p>
       <p></p>
       <p></p>
-      <div className="display_events">
+      {/* <div className="display_events">
         <h2 className="p-3 text-center">Display a list of events</h2>
         <table className="table table-striped table-bordered">
           <thead>
@@ -82,7 +89,7 @@ export default function App() {
             )}
           </tbody>
         </table>
-      </div>
+      </div> */}
       
   
       <div>

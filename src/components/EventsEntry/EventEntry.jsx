@@ -43,7 +43,7 @@ export default function EventEntry() {
                 })
                 .catch(error => { console.log(error) });
         }
-    }, []);
+    }, [params.eventId]);
 
     function createNewEvent() {
         Axios.post('/api/event/', { eventName, eventDate, eventTime, eventDescription, eventLocation })

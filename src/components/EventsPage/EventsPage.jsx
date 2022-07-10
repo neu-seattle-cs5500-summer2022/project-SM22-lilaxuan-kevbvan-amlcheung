@@ -12,6 +12,7 @@ export default function EventsPage(props) {
 
     // Gets the event and sets the event Id
     useEffect(function() {
+        console.log("IN EVENTSPAGE");
         Axios.get('/api/event/' + params.eventId)
             .then(response => setEvent(response.data))
             .catch(error => {
@@ -20,11 +21,19 @@ export default function EventsPage(props) {
                 navigate("/");
                 navigate("0");
                 }
-                });
+            });
         setEventId(params.eventId);
     },[]);
 
-   
+    if (!event) {
+
+        return (<div>
+        
+        Event loading...
+        
+        </div>)
+        
+    }
 
     return ( 
         <div>
