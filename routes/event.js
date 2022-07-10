@@ -7,12 +7,32 @@ const router = express.Router();
 
 // Gets all events
 router.get('/', function (request, response) {
+    console.log("event.js: 1");
     return EventModel.getAllEvents()
         .then(allEvents => {
+            console.log("event.js: 2");
             response.status(200).send(allEvents)
         })
         .catch(error => {
+            console.log("event.js: 3");
             response.status(400).send(error)
+        })
+})
+
+// gets event by Id
+router.get('/:eventId', function(request, response) {
+    console.log("A");
+    const eventId = request.params.eventId
+    console.log("eventId: " + eventId);
+
+    return EventModel.getEventById(eventId)
+        .then(event => {
+                response.status(200).send(event);
+                console.log("B");
+        })
+        .catch(error => {
+            response.status(400).send(error);
+            console.log("C");
         })
 })
 
@@ -51,7 +71,7 @@ router.post('/', function (request, response) {
         eventLocation: location
     }
 
-    console.log(event);
+    console.log("Event POST" + event);
 
     return EventModel.createEvent(event)
         .then(dbResponse => {

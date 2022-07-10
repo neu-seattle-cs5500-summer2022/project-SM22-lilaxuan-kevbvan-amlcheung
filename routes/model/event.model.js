@@ -12,16 +12,22 @@ function getAllEvents() {
     return EventModel.find().exec();
 }
 
-/*
-function getReviewById(id) {
-    return ReviewModel.find(id).exec();
+function getEventByName(eventName) {
+
+    return EventModel.find({
+    
+    eventName: eventName
+    
+    }).exec();
+    
 }
-*/
-// function getReviewByRestaurantId(RestaurantId) {
-//     return ReviewModel.find({
-//         restaurantId: RestaurantId
-//     }).exec();
-// }
+    
+function getEventById(id) {
+
+return EventModel.findById(id).exec();
+
+}
+
 
 function updateEventByEventId(id, updatedEvent) {
     return EventModel.findByIdAndUpdate(id, {
@@ -35,20 +41,12 @@ function deleteEventByEventId(EventId) {
     }).exec();
 }
 
-// function deleteReviewByReviewId(id) {
-//     return ReviewModel.findByIdAndDelete(id).exec();
-// }
 
 module.exports = {
-//     createReview,
-//     getAllReviews,
-//    // getReviewById,
-//     getReviewByRestaurantId,
-//     updateReviewByReviewId,
-//     deleteReviewByRestaurantId,
-//     deleteReviewByReviewId,
     createEvent,
     getAllEvents,
+    getEventByName,
+    getEventById,
     updateEventByEventId,
     deleteEventByEventId,
 }
