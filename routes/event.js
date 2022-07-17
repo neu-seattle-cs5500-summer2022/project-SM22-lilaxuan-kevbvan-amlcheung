@@ -1,8 +1,5 @@
 const express = require('express');
 const EventModel = require('./model/event.model');
-// const jwt = require('jsonwebtoken');
-// const auth_middleware = require('./middleware/auth_middleware');
-// const { get } = require('./user');
 const router = express.Router();
 
 // Gets all events
@@ -26,11 +23,11 @@ router.get('/:eventId', function(request, response) {
     return EventModel.getEventById(eventId)
         .then(event => {
                 response.status(200).send(event);
-                console.log("Get Sucessful");
+                console.log("Get Router Sucessful");
         })
         .catch(error => {
             response.status(400).send(error);
-            console.log("C");
+            console.log("Get Router Unsuccessful");
         })
 })
 
