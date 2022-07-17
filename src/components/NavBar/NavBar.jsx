@@ -29,6 +29,7 @@ export default function NavBar(props) {
     return (
         <div className='createEvent'>
             <a href='/eventEntry/new'><h4>Create An Event</h4></a>
+            <a href='/'><h4>Home</h4></a>
         </div>
 
     )
