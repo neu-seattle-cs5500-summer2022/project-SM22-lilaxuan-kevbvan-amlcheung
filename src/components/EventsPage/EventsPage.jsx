@@ -38,10 +38,23 @@ export default function EventsPage(props) {
     return ( 
         <div>
             <div>
-                Event Id: {event.eventId} 
+                <button>Update Event</button>
+                <button>Delete Event</button>
             </div>
             <div>
                 Event Name: {event.eventName}
+            </div>
+            <div>
+                Description: {event.eventDescription}
+            </div>
+            <div>
+                Time: {event.eventTime}
+            </div>
+            <div>
+                Date: {event.eventDate}
+            </div>
+            <div>
+                Location: {event.eventLocation}
             </div>
         </div>
         ) 

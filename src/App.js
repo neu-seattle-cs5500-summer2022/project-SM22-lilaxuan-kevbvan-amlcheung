@@ -18,12 +18,6 @@ export default function App() {
       .then(function (response) {
         setEvents(response.data);
       })
-    Axios.get('/')
-    .then(function (response) {
-      console.log("success");
-      setEvents(response.data);
-      console.log("EVENTS: " + events);
-    })
     .catch(error => {console.log("ERROR: " + error)});
   }
 
@@ -35,10 +29,10 @@ export default function App() {
   for (let event of events) {
     eventComponent.push(<div>
       <a href={'/event/' + event._id}><div>Event Name: {event.eventName}</div></a>
-      {/* <div>Time: {event.eventTime}</div>
+      <div>Time: {event.eventTime}</div>
       <div>Date: {event.eventDate}</div>
       <div>Location: {event.eventLocation}</div>
-      <div>Desc: {event.eventDescription}</div> */}
+      <div>Desc: {event.eventDescription}</div>
     </div>)
   }
 
