@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams,  useNavigate } from 'react-router';
-import '../EventsEntry/EventEntry';
+import './EventEntry';
 
 export default function EventsPage(props) {
 
@@ -25,6 +25,22 @@ export default function EventsPage(props) {
         setEventId(params.eventId);
     },[]);
 
+
+    function deleteEvent() {
+        const eventId = event._id;
+        Axios.delete('/api/event/' + eventId)
+            .then(response => {
+                navigate('/') // navigates to home
+                navigate(0) // refreshes page
+            })
+            .catch(err => console.log(err));
+    }
+
+
+
+
+
+
     if (!event) {
 
         return (<div>
@@ -38,8 +54,8 @@ export default function EventsPage(props) {
     return ( 
         <div>
             <div>
-                <button>Update Event</button>
-                <button>Delete Event</button>
+                <button onClick={deleteEvent}>Delete Event</button>
+                <button>Uopdate Event</button>
             </div>
             <div>
                 Event Name: {event.eventName}
