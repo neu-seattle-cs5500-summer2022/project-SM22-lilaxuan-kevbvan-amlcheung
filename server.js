@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 
 const app = express();
 const eventRouter = require('./routes/event');
-// const mongoDBEndpoint = 'mongodb+srv://cs5500:cs5500@seaswe.tgzl7.mongodb.net/events_app?retryWrites=true&w=majority';
-const mongoEndpoint = process.env.MONGODB_URI || 'mongodb://127.0.0.1/project-SM22-lilaxuan-kevbvan-amlcheung';
+const mongoDBEndpoint = 'mongodb+srv://cs5500:cs5500@seaswe.tgzl7.mongodb.net/events_app?retryWrites=true&w=majority';
+// const mongoEndpoint = process.env.MONGODB_URI || 'mongodb://127.0.0.1/project-SM22-lilaxuan-kevbvan-amlcheung';
 mongoose.connect(mongoDBEndpoint, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Error connecting to MongoDB:'));
