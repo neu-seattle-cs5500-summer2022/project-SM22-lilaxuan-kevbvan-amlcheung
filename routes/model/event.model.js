@@ -35,10 +35,9 @@ function updateEventByEventId(id, updatedEvent) {
     }).exec();
 }
 
-function deleteEventByEventId(EventId) {
-    return EventModel.findByIdAndDelete(EventId)({
-        eventId: EventId
-    }).exec();
+function deleteEvent(EventId) {
+    // console.log("in deleteEvent()");
+    return EventModel.findByIdAndDelete(EventId).exec();
 }
 
 
@@ -48,5 +47,5 @@ module.exports = {
     getEventByName,
     getEventById,
     updateEventByEventId,
-    deleteEventByEventId,
+    deleteEvent,
 }
