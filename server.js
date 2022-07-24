@@ -14,6 +14,7 @@ db.on('error', console.error.bind(console, 'Error connecting to MongoDB:'));
 db.once("open", () => console.log("connect to database"));
 
 const cors = require('cors');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -23,6 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: '*',
 }));
+
+app.use(createProxyMiddleware(["/api", "/otherApi"], {target: "http://localhost:8000/"}))
 
 app.use('/api/event', eventRouter);
 
