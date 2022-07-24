@@ -30,13 +30,16 @@ export default function EventsPage(props) {
         const eventId = event._id;
         Axios.delete('/api/event/' + eventId)
             .then(response => {
-                navigate('/') // navigates to home
-                navigate(0) // refreshes page
+                navigate('/')
+                navigate(0)
             })
             .catch(err => console.log(err));
     }
 
-
+    function updateEvent() {
+        navigate('/event/' + params.eventId)
+        navigate(0)
+    }
 
 
 
