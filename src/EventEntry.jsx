@@ -55,6 +55,21 @@ export default function EventEntry() {
             })
             .catch(error => console.log(error.response));
     }
+
+
+    function updateEvent() {
+        const eventId = params.eventId;
+        Axios.put('/api/event/', {eventId, eventName, eventDate, eventTime, eventDescription, eventLocation})
+            .then(response => {
+                console.log("WE ARE IN UPDATE EVENT")
+                navigate('/event/' + eventId);
+                navigate(0);
+            })
+            .catch(error => console.log(error.response));
+    }
+
+
+
     // console.log("HERE");
     if (params.eventId === 'new') {
         return (
@@ -127,7 +142,7 @@ export default function EventEntry() {
                     <p>
                     </p>
 
-                    <button className="submit" onClick={createNewEvent}>
+                    <button className="submit" onClick={updateEvent}>
                         Submit
                     </button>
                 </div>

@@ -29,10 +29,10 @@ return EventModel.findById(id).exec();
 }
 
 
-function updateEventByEventId(id, updatedEvent) {
+function updateEventByEventId(id, updatedName, updatedDate, updatedTime, updatedDesc, updatedLocation) {
     return EventModel.findByIdAndUpdate(id, {
-        event: updatedEvent
-    }).exec();
+        "$set": {"eventName": updatedName, "eventDate": updatedDate, "eventTime": updatedTime, "eventDescription": updatedDesc, "eventLocation": updatedLocation }}
+        ).exec();
 }
 
 function deleteEvent(EventId) {

@@ -37,7 +37,7 @@ export default function EventsPage(props) {
     }
 
     function updateEvent() {
-        navigate('/event/' + params.eventId)
+        navigate('/eventEntry/' + params.eventId)
         navigate(0)
     }
 
@@ -58,7 +58,7 @@ export default function EventsPage(props) {
         <div>
             <div>
                 <button onClick={deleteEvent}>Delete Event</button>
-                <button>Uopdate Event</button>
+                <button onClick={updateEvent}>Update Event</button>
             </div>
             <div>
                 Event Name: {event.eventName}

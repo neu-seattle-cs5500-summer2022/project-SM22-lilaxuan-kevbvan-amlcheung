@@ -88,13 +88,13 @@ router.put('/', function (request, response) {
     const eventDescription = request.body.eventDescription;
     const eventDate = request.body.eventDate;
     const eventTime = request.body.eventTime;
-    const eventLoctaion = request.body.eventLocation;
+    const eventLocation = request.body.eventLocation;
 
     if (eventDate === undefined) {
         eventDate = request.date;
     }
 
-    return EventModel.updateEventByEventId(eventId, eventName, eventDescription, eventDate, eventTime, eventLoctaion)
+    return EventModel.updateEventByEventId(eventId, eventName, eventDate, eventTime, eventDescription, eventLocation)
         .then(dbResponse => {
             response.status(200).send(dbResponse);
         })
