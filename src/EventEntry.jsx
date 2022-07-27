@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import './EventEntry.css';
+import DateSelector from './DateSelector.jsx'
 
 export default function EventEntry() {
 
@@ -68,7 +69,7 @@ export default function EventEntry() {
             .catch(error => console.log(error.response));
     }
 
-
+    function
 
     // console.log("HERE");
     if (params.eventId === 'new') {
@@ -86,6 +87,7 @@ export default function EventEntry() {
                     Date
                 </div>
                 <input id='eventDate' className="input-box" value={eventDate} onChange={e => setEventDate(e.target.value)} />
+                <DateSelector/>
 
                 <div>
                     Time

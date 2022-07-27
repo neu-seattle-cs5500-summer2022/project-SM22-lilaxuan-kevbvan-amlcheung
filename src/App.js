@@ -47,7 +47,6 @@ export default function App() {
         {eventComponent}
       </div>
 
-
       <footer id="footer">Group 3 Team members: Ashley Cheung, Kevin Van, Jiaxuan Li </footer>
 
     </div>
