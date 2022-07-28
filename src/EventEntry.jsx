@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import './EventEntry.css';
 import DateSelector from './DateSelector.jsx'
+import TimeSelector from './TimeSelector';
 
 export default function EventEntry() {
 
@@ -24,7 +25,6 @@ export default function EventEntry() {
         const locationInput = document.getElementById('eventLocation')
         if (params.eventId === 'new') {
             eventInput.value = '';
-            timeInput.value = '';
             descInput.value = '';
             locationInput.value = '';
         } else {
@@ -89,7 +89,7 @@ export default function EventEntry() {
                 <div>
                     Time
                 </div>
-                <input id='eventTime' className="input-box" value={eventTime} onChange={e => setEventTime(e.target.value)} />
+                <TimeSelector setEventTime={setEventTime}/>
 
                 <div>
                     Location
@@ -125,7 +125,7 @@ export default function EventEntry() {
                     <div>
                         Time
                     </div>
-                    <input className="input-box" value={eventTime} onChange={e => setEventTime(e.target.value)} />
+                    <TimeSelector setEventTime={setEventTime}/>
 
                     <div>
                         Location

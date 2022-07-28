@@ -5,7 +5,7 @@ import format from "date-fns/format";
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 
-export default function CalendarComponent({setEventDate}) {
+export default function DateSelector({setEventDate}) {
 
         const [date,setDate] = useState('')
         const [open,setOpen] = useState(false)
