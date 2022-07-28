@@ -24,7 +24,6 @@ export default function EventEntry() {
         const locationInput = document.getElementById('eventLocation')
         if (params.eventId === 'new') {
             eventInput.value = '';
-            dateInput.value = '';
             timeInput.value = '';
             descInput.value = '';
             locationInput.value = '';
@@ -69,8 +68,6 @@ export default function EventEntry() {
             .catch(error => console.log(error.response));
     }
 
-    function
-
     // console.log("HERE");
     if (params.eventId === 'new') {
         return (
@@ -86,8 +83,8 @@ export default function EventEntry() {
                 <div>
                     Date
                 </div>
-                <input id='eventDate' className="input-box" value={eventDate} onChange={e => setEventDate(e.target.value)} />
-                <DateSelector/>
+            
+                <DateSelector setEventDate= {setEventDate}/>
 
                 <div>
                     Time
@@ -95,16 +92,14 @@ export default function EventEntry() {
                 <input id='eventTime' className="input-box" value={eventTime} onChange={e => setEventTime(e.target.value)} />
 
                 <div>
-                    Description
-                </div>
-                <input id='eventDescription' className="input-box" value={eventDescription} onChange={e => setEventDesc(e.target.value)} />
-
-                <div>
                     Location
                 </div>
                 <input id='eventLocation' className="input-box" value={eventLocation} onChange={e => setEventLocation(e.target.value)} />
-                <p>
-                </p>
+
+                <div>
+                    Description
+                </div>
+                <textarea id='eventDescription' className="input-box" value={eventDescription} onChange={e => setEventDesc(e.target.value)} />
 
                 <button className="submit" onClick={createNewEvent}>
                     Submit
@@ -125,7 +120,7 @@ export default function EventEntry() {
                     <div>
                         Date
                     </div>
-                    <input className="input-box" value={eventDate} onChange={e => setEventDate(e.target.value)} />
+                    <DateSelector setEventDate= {setEventDate}/>
 
                     <div>
                         Time
@@ -133,16 +128,14 @@ export default function EventEntry() {
                     <input className="input-box" value={eventTime} onChange={e => setEventTime(e.target.value)} />
 
                     <div>
-                        Description
-                    </div>
-                    <input className="input-box" value={eventDescription} onChange={e => setEventDesc(e.target.value)} />
-
-                    <div>
                         Location
                     </div>
                     <input className="input-box" value={eventLocation} onChange={e => setEventLocation(e.target.value)} />
-                    <p>
-                    </p>
+
+                    <div>
+                        Description
+                    </div>
+                    <textarea className="input-box" value={eventDescription} onChange={e => setEventDesc(e.target.value)} />
 
                     <button className="submit" onClick={updateEvent}>
                         Submit
