@@ -27,9 +27,9 @@ app.use(cors({
 app.use('/api/event', eventRouter);
 
 // allows code to work with heroku
-// app.get('*', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.get("/", function(req, res) {
   res.send("Serving currently running!!!");
