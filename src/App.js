@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import './App.css';
-// import Modali, { useModali } from 'modali';
-// import EventEntry from './EventEntry';
-// import { getAllEvents } from '../routes/model/event.model';
-// import EventsPage from './EventsPage';
 
 // This is the main entry of the app!
 
@@ -22,7 +18,7 @@ export default function App() {
   }
 
   useEffect(getEvents, []);
-  // console.log("Events: " + events);
+  console.log("Events: " + events);
 
   const eventComponent = [];
   console.log("eventComponent: " + eventComponent);
@@ -50,7 +46,6 @@ export default function App() {
       <div>
         {eventComponent}
       </div>
-
 
       <footer id="footer">Group 3 Team members: Ashley Cheung, Kevin Van, Jiaxuan Li </footer>
 
