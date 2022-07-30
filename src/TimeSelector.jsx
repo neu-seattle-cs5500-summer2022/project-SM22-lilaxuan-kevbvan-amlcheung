@@ -6,7 +6,7 @@ export default function TimeSelector({setEventTime}) {
     const [time, setTime] = useState('');
 
     useEffect(()=> {
-        setTime('10:00')
+        // setTime('10:00')
     }, [])
 
     const handleTimeSelect = (time) => {

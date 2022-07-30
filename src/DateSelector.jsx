@@ -18,7 +18,7 @@ export default function DateSelector({setEventDate}) {
         }
 
         useEffect(()=> {
-            setDate(format(new Date(), 'MM/dd/yyyy'))
+            // setDate(format(new Date(), 'MM/dd/yyyy'))
             document.addEventListener("click", hideCalendarOnOutsideClick, true)
         }, [])
 
