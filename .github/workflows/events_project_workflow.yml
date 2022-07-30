@@ -24,8 +24,9 @@ jobs:
         run: npm run test
 
       - name: Run the Build
-        run: npm install
-        run: npm run devstart
+        run: |
+          npm install
+          npm run devstart
 
       - name: Deploy to Heroku
         run: git push Heroku main
