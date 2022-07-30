@@ -11,7 +11,7 @@ on:
     - releases/**
 
 jobs:
-  check-bats-version:
+  test_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +23,9 @@ jobs:
       - name: Run the test & Build
         run: |
           npm install
-          npm run test
           npm run devstart
+          npm run test
+
 
       - name: Deploy to Heroku
         run: git push Heroku main
