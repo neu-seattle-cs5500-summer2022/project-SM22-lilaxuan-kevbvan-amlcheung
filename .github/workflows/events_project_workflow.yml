@@ -23,7 +23,6 @@ jobs:
       - name: Run the test & Build
         run: |
           npm install
-          npm run devstart
           npm run test
 
 
