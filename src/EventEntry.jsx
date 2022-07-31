@@ -59,16 +59,15 @@ export default function EventEntry() {
 
     function updateEvent() {
         const eventId = params.eventId;
-        Axios.put('/api/event/', {eventId, eventName, eventDate, eventTime, eventDescription, eventLocation})
+        Axios.put('/api/event/', { eventId, eventName, eventDate, eventTime, eventDescription, eventLocation })
             .then(response => {
-                console.log("WE ARE IN UPDATE EVENT")
+                // console.log("WE ARE IN UPDATE EVENT")
                 navigate('/event/' + eventId);
                 navigate(0);
             })
             .catch(error => console.log(error.response));
     }
 
-    // console.log("HERE");
     if (params.eventId === 'new') {
         return (
             <div className='inputPage'>
@@ -83,13 +82,15 @@ export default function EventEntry() {
                 <div>
                     Date
                 </div>
-            
-                <DateSelector setEventDate= {setEventDate}/>
+
+                <DateSelector setEventDate={setEventDate} />
 
                 <div>
                     Time
                 </div>
-                <TimeSelector setEventTime={setEventTime}/>
+                <div className='timeSelector'>
+                    <TimeSelector setEventTime={setEventTime} />
+                </div>
 
                 <div>
                     Location
@@ -105,13 +106,13 @@ export default function EventEntry() {
                     Submit
                 </button>
             </div>
-
         )
     } else {
         return (
             <div>
-                <div className="header">Update an Event</div>
-                <div className="new-event-form">
+                <div className="inputPage">
+                    <h1>Update an Event</h1>
+                    <div className="new-event-form"></div>
                     <div>
                         Event Name
                     </div>
@@ -120,12 +121,14 @@ export default function EventEntry() {
                     <div>
                         Date
                     </div>
-                    <DateSelector setEventDate= {setEventDate}/>
+                    <DateSelector setEventDate={setEventDate} />
 
                     <div>
                         Time
                     </div>
-                    <TimeSelector setEventTime={setEventTime}/>
+                    <div className='timeSelector'>
+                        <TimeSelector setEventTime={setEventTime} />
+                    </div>
 
                     <div>
                         Location
@@ -146,6 +149,4 @@ export default function EventEntry() {
         )
 
     }
-
-    // }
 }

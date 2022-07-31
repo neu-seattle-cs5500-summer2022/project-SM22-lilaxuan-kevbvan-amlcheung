@@ -1,7 +1,8 @@
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams,  useNavigate } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import './EventEntry';
+import "./EventsPage.css";
 
 export default function EventsPage(props) {
 
@@ -11,19 +12,19 @@ export default function EventsPage(props) {
     const navigate = useNavigate();
 
     // Gets the event and sets the event Id
-    useEffect(function() {
+    useEffect(function () {
         console.log("IN EVENTSPAGE");
         Axios.get('/api/event/' + params.eventId)
             .then(response => setEvent(response.data))
             .catch(error => {
                 if (error.response.status === 404) {
-                console.log("in error");
-                navigate("/");
-                navigate("0");
+                    console.log("in error");
+                    navigate("/");
+                    navigate("0");
                 }
             });
         setEventId(params.eventId);
-    },[]);
+    }, []);
 
 
     function deleteEvent() {
@@ -47,36 +48,35 @@ export default function EventsPage(props) {
     if (!event) {
 
         return (<div>
-        
-        Event loading...
-        
+
+            Event loading...
+
         </div>)
-        
+
     }
 
-    return ( 
-        <div>
+    return (
+        <div className='delAndUpdEventPage'>
             <div>
-                <button onClick={deleteEvent}>Delete Event</button>
-                <button onClick={updateEvent}>Update Event</button>
+                <button className="deleteAndUpdateButton" onClick={deleteEvent}>Delete Event</button>
+                <button className="deleteAndUpdateButton" onClick={updateEvent}>Update Event</button>
             </div>
+            <p>
+            </p>
+
             <div>
-                Event Name: {event.eventName}
-            </div>
-            <div>
-                Description: {event.eventDescription}
-            </div>
-            <div>
-                Time: {event.eventTime}
-            </div>
-            <div>
-                Date: {event.eventDate}
-            </div>
-            <div>
-                Location: {event.eventLocation}
+                <h3>Event Name: {event.eventName}</h3>
+                <p> </p>
+                <h3>Description: {event.eventDescription}</h3>
+                <p> </p>
+                <h3>Time: {event.eventTime}</h3>
+                <p> </p>
+                <h3>Date: {event.eventDate}</h3>
+                <p> </p>
+                <h3>Location: {event.eventLocation}</h3>
             </div>
         </div>
-        ) 
+    )
 
 
 
