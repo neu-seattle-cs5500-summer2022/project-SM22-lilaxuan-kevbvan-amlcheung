@@ -14,7 +14,7 @@ export default function App() {
       .then(function (response) {
         setEvents(response.data);
       })
-    .catch(error => {console.log("ERROR: " + error)});
+      .catch(error => { console.log("ERROR: " + error) });
   }
 
   useEffect(getEvents, []);
@@ -42,12 +42,10 @@ export default function App() {
           Welcome to the Events Project!
         </p>
       </header>
-  
+
       <div>
         {eventComponent}
       </div>
-
-      <footer id="footer">Group 3 Team members: Ashley Cheung, Kevin Van, Jiaxuan Li </footer>
 
     </div>
   );

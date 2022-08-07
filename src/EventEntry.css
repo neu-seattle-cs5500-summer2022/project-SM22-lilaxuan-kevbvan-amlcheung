@@ -10,6 +10,7 @@
     justify-content: center;
 }
 
+
 .submit-button {
     margin: 15px;
 }
@@ -56,6 +57,7 @@
 
 /*This style is a must since the create new event link will still be displayed in 
 the new page if without this style */
+/* style for create new event */
 .inputPage {
     background-color: #282c34;
     display: flex;
@@ -69,4 +71,8 @@ the new page if without this style */
     min-width: 100%;
     min-height: 100%;
     left: 0px;
+}
+
+.timeSelector {
+    background-color: white;
 }
